@@ -1,0 +1,10 @@
+@import './styles/nav';
+@import './styles/books';
+@import './styles/colors';
+@import './styles/form';
+@import './styles/spinner';
+
+#root {
+  background-color: $z;
+  width: 100vw;
+}
