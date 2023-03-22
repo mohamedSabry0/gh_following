@@ -6,11 +6,11 @@ export default function Layout() {
     <>
       <nav>
         <div>
-          <h1 className="logo">Bookstore CMS</h1>
+          <h1 className="logo">followeestore CMS</h1>
           <ul>
             <li>
               <NavLink to="/">
-                BOOKS
+                followeeS
               </NavLink>
             </li>
             <li>

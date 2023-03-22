@@ -6,14 +6,12 @@ import {
 } from 'react-router-dom';
 import './App.scss';
 import Layout from './Layout';
-import Books from './components/Books';
-import Categories from './components/Categories';
+import Followees from './components/followees';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route index element={<Books />} />
-      <Route path="categories" element={<Categories />} />
+      <Route index element={<Followees />} />
       <Route path="*" element={<h2>Page Not Found</h2>} />
     </Route>,
   ),

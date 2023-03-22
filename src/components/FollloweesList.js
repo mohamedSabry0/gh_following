@@ -1,23 +1,23 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { booksState, fetchBooks } from '../redux/books/booksSlice';
-import Book from './Book';
+import { followeesState, fetchFollowees } from '../redux/followees/followeesSlice';
+import Followee from './Followee';
 
-export default function BooksList() {
+export default function FolloweesList() {
   const dispatch = useDispatch();
-  const { books, error, status } = useSelector(booksState);
+  const { followees, error, status } = useSelector(followeesState);
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchBooks());
+      dispatch(fetchFollowees());
     }
   }, [dispatch, status]);
 
   if (status === 'succeeded') {
     return (
-      <div className="books-list">
-        {books.map((item) => (
-          <Book
+      <div className="followees-list">
+        {followees.map((item) => (
+          <Followee
             key={item.item_id}
             id={item.item_id}
             category={item.category}

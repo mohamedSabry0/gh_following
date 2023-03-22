@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import unique from '../../util/unique';
-import { fetchBooks, addBook, removeBook } from './booksThunks';
+import { fetchFollowees, addFollowee, removeFollowee } from './followeesThunks';
 
 const initialState = {
-  books: [],
+  followees: [],
   status: 'idle', // 'idle', 'loading', 'succeeded', 'failed'
   error: null,
 };
@@ -16,29 +15,29 @@ https://redux-toolkit.js.org/api/createReducer#builderaddmatcher
 const isPendingAction = (action) => action.type.endsWith('/pending');
 const isRejectedAction = (action) => action.type.endsWith('/rejected');
 
-const booksSlice = createSlice({
-  name: 'books',
+const followeesSlice = createSlice({
+  name: 'followees',
   initialState,
   reducers: {},
   extraReducers(builder) {
     builder
 
-      .addCase(fetchBooks.fulfilled, (state, action) => ({
+      .addCase(fetchFollowees.fulfilled, (state, action) => ({
         ...state,
         // TODO: handle (should be redundant) render
-        books: unique(action.payload, state.books),
+        // followees: state,
         status: 'succeeded',
       }))
 
-      .addCase(addBook.fulfilled, (state, action) => ({
+      .addCase(addfollowee.fulfilled, (state, action) => ({
         ...state,
-        books: [...state.books, action.payload],
+        followees: [...state.followees, action.payload],
         status: 'succeeded',
       }))
 
-      .addCase(removeBook.fulfilled, (state, action) => ({
+      .addCase(removefollowee.fulfilled, (state, action) => ({
         ...state,
-        books: [...state.books.filter((item) => item.item_id !== action.payload)],
+        followees: [...state.followees.filter((item) => item.item_id !== action.payload)],
         status: 'succeeded',
       }))
 
@@ -54,6 +53,6 @@ const booksSlice = createSlice({
   },
 });
 
-export const booksState = (state) => state.books;
-export { fetchBooks, addBook, removeBook };
-export default booksSlice.reducer;
+export const followeesState = (state) => state.followees;
+export { fetchfollowees, addfollowee, removefollowee };
+export default followeesSlice.reducer;
